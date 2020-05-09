@@ -1,3 +1,3 @@
 # If you are not me , get off my computer.
 <br>by Ben.</br>
-<br><a href=http://makclas.com >Mak sir </a></br>
+<br><a href=http://makclass.com >Mak sir </a></br>
