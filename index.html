@@ -1,0 +1,54 @@
+<h1>Welcome, please enter the passcode</h1>
+
+<input id="password" type="text" autofocus>
+<button id="loginbutton" type="button">Login</button>
+
+<small>Password: this is a demo</small>
+
+
+<script src="https://code.jquery.com/jquery.min.js"></script>
+
+<script src="./sha1.min.js"></script>
+
+<script>
+
+  function loadPage(pwd) {
+
+    var hash= pwd;
+    hash= Sha1.hash(pwd);
+    console.log(hash);
+    var url= hash + "/index.html";
+
+    $.ajax({
+      url : url,
+      dataType : "html",
+      success : function(data) {
+
+        window.location= url;
+
+      },
+      error : function(xhr, ajaxOptions, thrownError) {
+
+
+        parent.location.hash= hash;
+
+        //$("#wrongPassword").show();
+        $("#password").attr("placeholder","wrong password");
+        $("#password").val("");
+      }
+    });
+  }
+
+
+  $("#loginbutton").on("click", function() {
+    loadPage( $("#password").val().toLowerCase() );
+  });
+  $("#password").keypress(function(e) {
+    if (e.which == 13) {
+
+      loadPage( $("#password").val().toLowerCase() );
+    }
+  });
+  $("#password").focus();
+
+</script>
